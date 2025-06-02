@@ -33,7 +33,7 @@ public:
     void newFrame();
     void render();
     bool eventFilter(QObject *watched, QEvent *event);
-
+    void reinitialize();
     static ImGuiRenderer *instance();
 
 public:

@@ -82,9 +82,9 @@ void ImGuiRenderer::initialize(WindowWrapper *window) {
     io.BackendPlatformName = "qtimgui";
     
     // Setup keyboard mapping
-    for (ImGuiKey key : keyMap.values()) {
-        io.KeyMap[key] = key;
-    }
+    // for (ImGuiKey key : keyMap.values()) {
+    //     io.KeyMap[key] = key;
+    // }
     
     // io.RenderDrawListsFn = [](ImDrawData *drawData) {
     //    instance()->renderDrawList(drawData);
@@ -541,6 +541,23 @@ bool ImGuiRenderer::eventFilter(QObject *watched, QEvent *event)
     }
   }
   return QObject::eventFilter(watched, event);
+}
+
+void ImGuiRenderer::reinitialize()
+{
+    g_Time = 0.0f;
+    g_FontTexture = 0;
+    g_ShaderHandle = 0;
+    g_VertHandle = 0;
+    g_FragHandle = 0;
+    g_AttribLocationTex = 0;
+    g_AttribLocationProjMtx = 0;
+    g_AttribLocationPosition = 0;
+    g_AttribLocationUV = 0;
+    g_AttribLocationColor = 0;
+    g_VboHandle = 0;
+    g_VaoHandle = 0;
+    g_ElementsHandle = 0;
 }
 
 ImGuiRenderer* ImGuiRenderer::instance() {
